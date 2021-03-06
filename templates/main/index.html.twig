@@ -1,20 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Reminder{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/reminder/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/reminder/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
+<div class="text-center" style="width:100%">
+    <h1>Votre <em>Reminder</em></h1>
+    
+    {{ form_start(form) }}
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker'>
+                    {{ form_widget(form.date) }}
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    {{ form_end(form) }}
 </div>
+
+<style>
+.btn-w-100 {
+    width:100%;
+}
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.datetimepicker').datetimepicker({
+                 locale: 'fr',
+        });
+    });
+</script>
 {% endblock %}
